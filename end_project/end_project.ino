@@ -139,21 +139,57 @@ void setup(void) {
 void Wakeup(){
    server.handleClient();
    server.send(200, "text/html",webSite);
-    display.drawXbm(0,0, 128, 64, face[3]);
+    display.drawXbm(0,0, 128, 64, face[14]);
     display.display();
     delay(200);
     server.handleClient();
     server.send(200, "text/html",webSite);
     display.clear();
-    display.drawXbm(0,0, 128, 64, face[2]);
+    display.drawXbm(0,0, 128, 64, face[15]);
     display.display();
     delay(200);
+    server.handleClient();
+    server.send(200, "text/html",webSite);
+    display.clear();
+    display.drawXbm(0,0, 128, 64, face[16]);
+    display.display();
+     delay(200);
+    server.handleClient();
+    server.send(200, "text/html",webSite);
+    display.clear();
+    display.drawXbm(0,0, 128, 64, face[15]);
+    display.display();
+     delay(200);
+    server.handleClient();
+    server.send(200, "text/html",webSite);
+    display.clear();
+    display.drawXbm(0,0, 128, 64, face[14]);
+    display.display();
+     delay(200);
     server.handleClient();
     server.send(200, "text/html",webSite);
     display.clear();
     display.drawXbm(0,0, 128, 64, face[7]);
     display.display();
+    delay(200);
 } //開機醒來
+
+
+void Happy1(){
+    for (int i=0; i<=3; i++) {
+       server.send(200, "text/html",webSite);
+        display.clear();
+        display.drawXbm(0,0, 128, 64, face[17]);
+        display.display();
+        delay(300);
+         server.send(200, "text/html",webSite);
+        display.clear();
+        display.drawXbm(0,0, 128, 64, face[18]);
+        display.display();
+        delay(300);
+         server.send(200, "text/html",webSite);
+    }
+}//新增的笑臉
 
 void Angry(){
     for (int i=0; i<=3; i++) {
@@ -262,7 +298,7 @@ void Unhappy(){
         
         if(pressValue>1000){
             moodData+=5;
-              Happy();
+             Happy1();
                if(moodData>=90){
                 eatpress_over=true;
                 timer=0;
@@ -365,6 +401,7 @@ void Hungry(){
 
 
 void loop(void) {
+  
 
  display.clear();//清除螢幕和緩衝區(clear) 
  server.handleClient();
@@ -421,7 +458,7 @@ void loop(void) {
         //motor B
         digitalWrite(Motor_B_A_Pin, HIGH);
         digitalWrite(Motor_B_B_Pin, HIGH);
-          eatpress_state= /*random(1, 3)*/2;
+          eatpress_state= 2/*random(1, 3)*/;
          
           eatpress_over=false;   
           while(eatpress_over==false){
